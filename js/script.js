@@ -11,5 +11,5 @@ console.log('Желаю всем достичь желаемого на курс
 console.log(deposit);
 console.log(mission);
 console.log('Изучаю Git, через терминал VSCode');
-console.log('Изучаю Git, через терминал VSCode, делаю проверку');
+console.log('Изучаю Git, через терминал VSCode');
 
