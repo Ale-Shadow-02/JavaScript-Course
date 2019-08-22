@@ -10,3 +10,4 @@ alert('Поздравляю с началом курса!');
 console.log('Желаю всем достичь желаемого на курсе');
 console.log(deposit);
 console.log(mission);
+console.log('Изучаю Git, через терминал VSCode');
