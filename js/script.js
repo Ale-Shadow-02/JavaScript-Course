@@ -1,15 +1,30 @@
-let money = 20000;
-let income = 'Hello';
-let addExpenses = money;
-let deposit = '100%';
-let mission = 'pass diploma';
-let period = 'autumn';
+let num = 266219;
 
-alert('Поздравляю с началом курса!');
+num = 1;
+let arrNum = [2, 6, 6, 2, 1, 9];
+for (let i = 0; i < arrNum.length; i++) {
+  num = num * arrNum[i];
+}
+console.log('num: ', num);
 
-console.log('Желаю всем достичь желаемого на курсе');
-console.log(deposit);
-console.log(mission);
-console.log('Изучаю Git, через терминал VSCode');
-console.log('Изучаю Git, через терминал VSCode, this test');
+num **= 3;
+console.log('num: ', num);
 
+num = String(num);
+
+console.log(num.substr(0, 2));
+
+
+/* let num = 266219;
+num = 2 * 6;
+num *= 6;
+num *= 2;
+num *= 1;
+num *= 9;
+console.log('num: ', num);
+
+num **=3;
+console.log('num: ', num);
+
+num = String(num);
+console.log(num.substring(0, 2)); */
