@@ -1,15 +1,34 @@
-let money = 20000;
-let income = 'Hello';
-let addExpenses = money;
-let deposit = '100%';
-let mission = 'pass diploma';
-let period = 'autumn';
+let mission = 500000;
+let period = 12;
 
-alert('Поздравляю с началом курса!');
+let money = 25000;
+console.log(typeof money);
 
-console.log('Желаю всем достичь желаемого на курсе');
-console.log(deposit);
-console.log(mission);
-console.log('Изучаю Git, через терминал VSCode');
-console.log('Изучаю Git, через терминал VSCode, this test');
+let income = '10000';
+console.log(typeof income);
+
+let deposit = true;
+console.log(typeof deposit);
+
+console.log(income.length);
+
+console.log('Период ' + period + ' месяцев. Цель заработать ' + mission + ' рублей!')
+
+let addExpenses = 'Квартплата, Интернет, Курсы, Отдых';
+console.log(addExpenses.toLocaleLowerCase());
+console.log(addExpenses.toLocaleUpperCase());
+
+console.log(addExpenses.split(', '));
+
+let budgetDay = money / 30;
+console.log('budgetDay: ', budgetDay);
+
+budgetDay = money % 30;
+console.log('budgetDay: ', budgetDay);
+
+
+
+
+
+
 
