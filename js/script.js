@@ -8,20 +8,20 @@ let money;
   money = prompt('Ваш месячный доход?', 25000);
   while (isNaN(money) || money === '' || money === null) {
     money = prompt('Ваш месячный доход?', 25000);
+    console.log(' money : ',  money );
     }
   };
 
-  start(); */
+  start();*/
 
-let start = function () {
+ let start = function () {
   do {
     money = prompt('Ваш месячный доход?', 25000);
   }
   while (isNaN(money) || money === '' || money === null);
-
 };
 
-start();
+start(); 
 
 let addExpenses = prompt('Перечислете возможные расходы за рссчитываемый период через запятую', ' Кредит ');
 console.log('addExpenses: ', addExpenses.split(','));
@@ -50,10 +50,12 @@ let getExpensesMonth = function () {
     if (i === 1) {
       expenseArr2 = prompt('Какие обязательные ежемесячные расходы у вас есть?', ' Кредит Сбер ');
     }
+ 
     sum += +prompt('Во сколько это обойдется?');
-    while (isNaN(sum) || sum === ' ' || sum === null) {
-      sum = +prompt('Во сколько это обойдется?');
-    }
+   
+      
+    
+    
   }
   return sum;
 };
