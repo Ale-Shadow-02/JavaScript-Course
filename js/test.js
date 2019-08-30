@@ -26,6 +26,19 @@ while (a <= 10) {
    
  
  */
+let money;
+
+let start = function () {
+  money = prompt('Ваш месячный доход?', 25000);
+  while (isNaN(money) || money === '' || money === null) {
+    money = prompt('Ваш месячный доход?', 25000);
+    console.log(' money : ', money);
+  }
+};
+
+
+
+
 let expenseArr1,
   expenseArr2;
 
@@ -39,13 +52,13 @@ let getExpensesMonth = function () {
       expenseArr2 = prompt('Какие обязательные ежемесячные расходы у вас есть?', ' Кредит Сбер ');
     }
 
-    sum += +prompt('Во сколько это обойдется?');
-    while (isNaN(sum) || sum === ' ' || sum === null) {
-      sum = +prompt('Во сколько это обойдется?');
-    }
+    sum += start();
+    
   }
   return sum;
 };
 
 
 console.log('getExpensesMonth(): ', getExpensesMonth());
+
+
