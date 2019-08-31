@@ -1,4 +1,3 @@
-
 'use strict';
 
 let mission = 120000;
@@ -42,7 +41,8 @@ let expenseArr1,
 
 //Сумма всех расходов
 let getExpensesMonth = function () {
-  let sum = 0;
+  let sum = 0,
+      ask;
   for (let i = 0; i < 2; i++) {
     if (i === 0) {
       expenseArr1 = prompt('Какие обязательные ежемесячные расходы у вас есть?', ' Кредит Альфа ');
@@ -50,10 +50,11 @@ let getExpensesMonth = function () {
     if (i === 1) {
       expenseArr2 = prompt('Какие обязательные ежемесячные расходы у вас есть?', ' Кредит Сбер ');
     }
-    sum += +prompt('Во сколько это обойдется?');
-    while (isNaN(sum) || sum == ' ' || sum == null) {
-      sum = +prompt('Во сколько это обойдется?');
+    do {
+      ask = prompt('Во сколько это обойдется?');
     }
+    while (isNaN(ask) || ask === ' ' || ask === null);
+    sum += +ask;
 
   }
   return sum;
@@ -98,4 +99,3 @@ let getStatusIncome = function () {
 
 console.log(getStatusIncome());
 console.log(getTargetMonth());
-
