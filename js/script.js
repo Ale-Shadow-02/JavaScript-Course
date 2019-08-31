@@ -1,3 +1,4 @@
+
 'use strict';
 
 let mission = 120000;
@@ -11,14 +12,13 @@ let money;
     console.log(' money : ',  money );
     }
   };
-
   start();*/
 
 let start = function () {
   do {
     money = prompt('Ваш месячный доход?', 25000);
   }
-  while (isNaN(money) || money === '' || money === null);
+  while (isNaN(money) || money === ' ' || money === null || money == 0);
 };
 
 start();
@@ -42,60 +42,60 @@ let expenseArr1,
 
 //Сумма всех расходов
 let getExpensesMonth = function () {
-    let sum = 0;
-    for (let i = 0; i < 2; i++) {
-      if (i === 0) {
-        expenseArr1 = prompt('Какие обязательные ежемесячные расходы у вас есть?', ' Кредит Альфа ');
-      }
-      if (i === 1) {
-        expenseArr2 = prompt('Какие обязательные ежемесячные расходы у вас есть?', ' Кредит Сбер ');
-      }
-      sum += +prompt('Во сколько это обойдется?');
-      while (isNaN(sum) || sum == '' || sum === null) {
+  let sum = 0;
+  for (let i = 0; i < 2; i++) {
+    if (i === 0) {
+      expenseArr1 = prompt('Какие обязательные ежемесячные расходы у вас есть?', ' Кредит Альфа ');
+    }
+    if (i === 1) {
+      expenseArr2 = prompt('Какие обязательные ежемесячные расходы у вас есть?', ' Кредит Сбер ');
+    }
+    sum += +prompt('Во сколько это обойдется?');
+    while (isNaN(sum) || sum == ' ' || sum == null) {
       sum = +prompt('Во сколько это обойдется?');
-      } 
-
-    }
-      return sum;
-    };
-    let costsMonth = getExpensesMonth();
-
-    console.log(' Расходы за месяц: ', costsMonth);
-
-    //Накопления за месяц доход - расход
-    function getAccumulatedMonth() {
-      accumulatedMonth = money - costsMonth;
-      return accumulatedMonth;
     }
 
-    console.log(' Доход: ' + getAccumulatedMonth());
+  }
+  return sum;
+};
+let costsMonth = getExpensesMonth();
 
-    //Округл период достижения цели
-    function getTargetMonth() {
-      return Math.floor(mission / getAccumulatedMonth());
-    }
+console.log(' Расходы за месяц: ', costsMonth);
 
-    let intent = getTargetMonth();
+//Накопления за месяц доход - расход
+function getAccumulatedMonth() {
+  accumulatedMonth = money - costsMonth;
+  return accumulatedMonth;
+}
 
-    if (intent < 0) {
-      console.log('Цель не будет достигнута');
-    } else {
-      console.log('Цель будет достигнута за: ', intent + ' месяцев');
-    }
+console.log(' Доход: ' + getAccumulatedMonth());
+
+//Округл период достижения цели
+function getTargetMonth() {
+  let intent = Math.floor(mission / getAccumulatedMonth());
+  if (intent < 0) {
+    return ('Цель не будет достигнута');
+  } else {
+    return ('Цель будет достигнута за: ' + intent + ' месяцa(ев)');
+  }
+}
 
 
 
-    //Результат дохода
-  let getStatusIncome = function () {
-    if (getAccumulatedMonth() >= 800) {
-      return ('Высокий уровень дохода');
-    } else if (getAccumulatedMonth() >= 300) {
-      return ('Средний уровень дохода');
-    } else if (getAccumulatedMonth() >= 0) {
-      return ('Низкий уровень дохода');
-    } else {
-      return ('Что то пошло не так');
-    }
-  };
 
-  console.log(getStatusIncome());
+//Результат дохода
+let getStatusIncome = function () {
+  if (getAccumulatedMonth() >= 800) {
+    return ('Высокий уровень дохода');
+  } else if (getAccumulatedMonth() >= 300) {
+    return ('Средний уровень дохода');
+  } else if (getAccumulatedMonth() >= 0) {
+    return ('Низкий уровень дохода');
+  } else {
+    return ('Что то пошло не так');
+  }
+};
+
+console.log(getStatusIncome());
+console.log(getTargetMonth());
+
