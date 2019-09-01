@@ -1,7 +1,6 @@
 'use strict';
 
-let accumulatedMonth,
-  money,
+  let money,
   start = function () {
     do {
       money = prompt('Ваш месячный доход?', 25000);
@@ -78,7 +77,12 @@ let appData = {
 
   //Период достижения цели
   getTargetMonth: function () {
-    return appData.mission / appData.budgetMonth;
+    let accumulatedMonth = appData.mission / appData.budgetMonth;
+    if (accumulatedMonth <= 0) {
+      return (' Цель никогда не будет достигнута! ');
+    } else {
+      return (' Цель будет достигнута' );
+    }
   },
 
   //Результат дохода
@@ -129,5 +133,7 @@ console.log(appData.getStatusIncome());
 for (let key in appData) {
   console.log(' Наша программа включает в себя данные: ' + key + '-' + appData[key]);
 }
+
+console.log(appData.getTargetMonth());
 
 console.log(appData.addExpenses.map(n => `${n[0].toUpperCase()}${n.slice(1)}`).join(', '));
