@@ -3,10 +3,7 @@
 let accumulatedMonth,
   money,
   start = function () {
-    do {
-      money = prompt('Ваш месячный доход?', 25000);
-    }
-    while (isNaN(money) || money === ' ' || money === null || money == 0);
+    money = ValidInput('Ваш месячный доход?', 25000, true);
   };
 
 start();
@@ -27,44 +24,21 @@ let appData = {
   expensesMonth: 0,
   asking: function () {
     if (confirm('Усть ли у вас дополнительный заработок?')) {
-      let itemIncom,
-        cashIncom;
-      do {
-        itemIncom = prompt(' Какой у вас дополнительный заработок? ', ' Фриланс ');
-      }
-      while (!isNaN(itemIncom) || itemIncom === ' ' || itemIncom === '' || itemIncom === null);
-      do {
-        cashIncom = prompt(' Сколько в месяц вы на этом зарабатываете? ', 8000);
-      }
-      while (isNaN(cashIncom) || cashIncom === ' ' || cashIncom === '' || cashIncom === null);
+      let itemIncom = ValidInput(' Какой у вас дополнительный заработок? ', ' Фриланс ');
+      let cashIncom = ValidInput(' Сколько в месяц вы на этом зарабатываете? ', 8000, true);
       appData.income[itemIncom] = cashIncom;
     }
 
-    let addExpenses;
-    do {
-      addExpenses = prompt('Перечислете возможные расходы за рaссчитываемый период через запятую', ' Кредит ');
-    }
-    while (!isNaN(addExpenses) || addExpenses === ' ' || addExpenses === '' || addExpenses === null);
+    let addExpenses = ValidInput('Перечислете возможные расходы за рaссчитываемый период через запятую', ' Кредит');
     appData.addExpenses = addExpenses.split(',').map(function (item) {
       return item.trim();
     });
 
-
-
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
     //Сумма всех расходов
     for (let i = 0; i < 2; i++) {
-      let ExpensesItem,
-        ExpensesCash;
-      do {
-        ExpensesItem = prompt('Какие обязательные ежемесячные расходы у вас есть?', 'Кредит Альфа');
-      }
-      while (!isNaN(ExpensesItem) || ExpensesItem === ' ' || ExpensesItem === '' || ExpensesItem === null);
-
-      do {
-        ExpensesCash = prompt('Во сколько это обойдется?');
-      }
-      while (isNaN(ExpensesCash) || ExpensesCash === ' ' || ExpensesCash === '' || ExpensesCash === null);
+      let ExpensesItem = ValidInput('Какие обязательные ежемесячные расходы у вас есть?', 'Кредит Альфа');
+      let ExpensesCash = ValidInput('Во сколько это обойдется?', 14000, true);
       appData.expenses[ExpensesItem] = ExpensesCash;
     }
   },
@@ -143,3 +117,15 @@ for (let key in appData) {
 console.log(appData.addExpenses.map(function (item) {
   return item[0].toUpperCase() + item.slice(1);
 }).join(', '));
+
+// Функцмя проверки входных данных
+function ValidInput(messenge, defaultValue, isNumb) {
+  let inputValue = prompt(messenge, defaultValue);
+  if (isNumb && +inputValue) {
+    return inputValue.trim();
+  } else if (!isNumb && inputValue !== null && inputValue !== ' ' && isNaN(inputValue)) {
+    return inputValue.trim();
+  } else {
+    return ValidInput(messenge, defaultValue, isNumb);
+  }
+}

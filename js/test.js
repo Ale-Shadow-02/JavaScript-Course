@@ -33,7 +33,7 @@ let myArr = ['первый', 'второй'];
 
 function ValidNumber(param) {
  
-  if (/^[-]?\d+$/.test(param)) {
+  if (/^-?\d+$/.test(param)) {
   isNaN(param) || param === '' || param === ' ' || param === null;
   
   return param;
