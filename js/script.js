@@ -83,7 +83,12 @@ let appData = {
 
   //Период достижения цели
   getTargetMonth: function () {
-    return appData.mission / appData.budgetMonth;
+    let accumulatedMonth = appData.mission / appData.budgetMonth;
+    if (accumulatedMonth <= 0) {
+      return (' Цель никогда не будет достигнута! ');
+    } else {
+      return (' Цель будет достигнута');
+    }
   },
 
   //Результат дохода
