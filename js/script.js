@@ -45,7 +45,12 @@ let appData = {
       addExpenses = prompt('Перечислете возможные расходы за рaссчитываемый период через запятую', ' Кредит ');
     }
     while (!isNaN(addExpenses) || addExpenses === ' ' || addExpenses === '' || addExpenses === null);
-    appData.addExpenses = addExpenses.split(',');
+    appData.addExpenses = addExpenses.split(',').map(function (item) {
+      return item.trim();
+    });
+
+
+
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
     //Сумма всех расходов
     for (let i = 0; i < 2; i++) {
@@ -130,4 +135,6 @@ for (let key in appData) {
   console.log(' Наша программа включает в себя данные: ' + key + '-' + appData[key]);
 }
 
-console.log(appData.addExpenses.map(n => `${n[0].toUpperCase()}${n.slice(1)}`).join(', '));
+console.log(appData.addExpenses.map(function (item) {
+  return item[0].toUpperCase() + item.slice(1);
+}).join(', '));
